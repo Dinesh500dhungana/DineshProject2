@@ -11,8 +11,8 @@ import static android.R.string.no;
 
 public class SudokuUnit {
     private int xPos, yPos, boxX, boxY, finalValue;
-    private static int noOfValuesFinalized=0;
-    private static boolean noSolutionAvailableForThis=false;
+    //private static int noOfValuesFinalized=0;
+
     private boolean valueFinalized=false;
     private Set<Integer> possibleValues = new HashSet<Integer>();  //Set<Integer> existingValues = new HashSet<Integer>();
 
@@ -33,7 +33,7 @@ public class SudokuUnit {
     public void setFinalValue(int val){
         this.finalValue=val;
         this.valueFinalized=true;
-        noOfValuesFinalized++;
+        //noOfValuesFinalized++;
         this.possibleValues.removeAll(this.getPossibleValues());
         this.possibleValues.add(val);
     }
@@ -49,12 +49,13 @@ public class SudokuUnit {
     public int  getFinalValue(){
         return finalValue;
     }
-    public static int getNoOfValuesFinalized() {return noOfValuesFinalized;}
-    public static boolean getNoSolutionAvailableForThis() {return noSolutionAvailableForThis;}
+    //public static int getNoOfValuesFinalized() {return noOfValuesFinalized;}
+    //public static boolean getNoSolutionAvailableForThis() {return noSolutionAvailableForThis;}
     public int getNoOfPossibleValues() {return possibleValues.size();}
     public Set<Integer> getPossibleValues() {return possibleValues;}
 
-    public void removeTheseFromPossibleValues(Set<Integer> arr){
+    public int removeTheseFromPossibleValues(Set<Integer> arr){
+        //This method will return possibleValues.size after the removal
         possibleValues.removeAll(arr);
         if(possibleValues.size()==1){
             //this.setFinalValue(this.possibleValues[0]);
@@ -63,11 +64,12 @@ public class SudokuUnit {
             }
             //this.finalValue=this.possibleValues;
             this.valueFinalized=true;
-            noOfValuesFinalized++;
+            //noOfValuesFinalized++;
         }
-        if(possibleValues.size()==0){
+        return possibleValues.size();
+        /*if(possibleValues.size()==0){
             //this means there is no solution for this puzzle
             noSolutionAvailableForThis=true;
-        }
+        }*/
     }
 }
