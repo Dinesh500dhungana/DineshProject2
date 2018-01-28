@@ -88,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         sudokuGrid.printSudoku();
         sudokuGrid.printPossibleValues();
 
-        Log.d(LOG_TAG, "Program Complete....");
+        Log.d(LOG_TAG, "Program Completed....");
 
     }
     //Log.e("I shouldn't be here");
