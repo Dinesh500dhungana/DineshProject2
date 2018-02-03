@@ -26,15 +26,15 @@ public class MainActivity extends AppCompatActivity {
 
 
     int[][] A = new int[][]{
-            {7, 0, 8, 0, 3, 0, 2, 0, 0},
-            {6, 0, 0, 0, 0, 5, 3, 0, 0},
-            {0, 0, 0, 0, 0, 0, 0, 0, 0},
-            {9, 0, 0, 0, 0, 0, 0, 5, 0},
-            {0, 4, 1, 0, 0, 0, 7, 3, 0},
-            {0, 5, 0, 0, 0, 0, 0, 0, 9},
-            {0, 0, 0, 8, 0, 0, 0, 0, 0},
-            {0, 0, 5, 7, 0, 0, 0, 0, 3},
-            {0, 0, 7, 0, 4, 0, 8, 0, 1}};
+            {0, 0, 0, 0, 3, 0, 0, 8, 0},
+            {0, 0, 8, 0, 0, 1, 0, 0, 4},
+            {0, 0, 7, 0, 0, 0, 0, 2, 0},
+            {0, 0, 5, 0, 0, 7, 0, 0, 0},
+            {0, 9, 0, 0, 1, 0, 0, 3, 0},
+            {0, 0, 0, 2, 0, 0, 9, 0, 0},
+            {0, 2, 0, 8, 0, 0, 0, 0, 0},
+            {4, 0, 0, 1, 0, 0, 6, 0, 0},
+            {0, 7, 0, 0, 6, 0, 0, 0, 0}};
 
     public void startProgram(View view) {
         SudokuGrid sudokuGrid = new SudokuGrid(A);
@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
             while (sudokuGrid.performFirstLogic()) {
             } //perform first logic until no more values are finalized
         } while (sudokuGrid.performSecondLogic());*/
-        puzzleSolved=sudokuGrid.solveGridWithFirstAndSecondLogic();
+        puzzleSolved=sudokuGrid.solveGridWithAllLogics();
 
         if (sudokuGrid.getNoSolutionAvailableForThis())
             Log.d(LOG_TAG, "No solution available for this grid. Wrong puzzle...");
